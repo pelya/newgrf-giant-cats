@@ -1,0 +1,96 @@
+grf {
+	grfid: "CAT\01";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	url  : string(STR_GRF_WEBSITE);
+	version: 1;
+	min_compatible_version: 1;
+}
+
+template template_empty () {[
+	0,		// Image X offset
+	0,		// Image Y offset
+	64,		// X size
+	64,		// Y size
+	-32,	// Map X offset
+	-32		// Map Y offset
+]}
+
+// TODO: rename depo_kacov to cat
+
+template temp_depo_kacov_1() {[
+	0,		// Image X offset
+	0,		// Image Y offset
+	2592,	// X size
+	1944,	// Y size
+	-172,	// Map X offset
+	-154	// Map Y offset
+]}
+
+// spriteset
+spriteset(spriteset_depo_kacov_1, "gfx/empty.png") {
+	template_empty()
+}
+alternative_sprites(spriteset_depo_kacov_1, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1.png") {
+	temp_depo_kacov_1()
+}
+
+// spritelayouts
+
+//depo_kacov_1
+
+spritelayout spritelayout_depo_kacov_1 {
+    ground {
+        sprite: GROUNDSPRITE_NORMAL;
+    }
+    building {
+        sprite: spriteset_depo_kacov_1;
+        xextent: 4;
+        yextent: 4;
+        zextent: 4;
+        xoffset: 6; //from NE edge
+        yoffset: 12; //from NW edge
+        zoffset: 0;
+    }
+}
+
+// decide spritelayout for each of the 4 views
+switch (FEAT_OBJECTS, SELF, switch_spritelayout_depo_kacov_view, view) {
+    //1:  spritelayout_depo_kacov_2;
+    //2:  spritelayout_depo_kacov_3;
+    //3:  spritelayout_depo_kacov_4;
+    spritelayout_depo_kacov_1;
+}
+
+// calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_depo_kacov_purchase, [
+        //use flat gound sprite for purchase menu
+        STORE_TEMP(0, 0),
+        //use normal terrain for purchase menu
+        STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+        ]) {
+    switch_spritelayout_depo_kacov_view;
+}
+
+item (FEAT_OBJECTS, item_depo_kacov) {
+    property {
+        class:                  "CATS";
+        classname:              string(STR_CAT_CLASSNAME);
+        name:                   string(STR_CAT_NAME);
+        climates_available:     ALL_CLIMATES;
+        size:                   [1,1];
+        build_cost_multiplier:  2;
+        remove_cost_multiplier: 8;
+        introduction_date:      date(1890,1,1);
+        end_of_life_date:       0xFFFFFFFF;
+        object_flags:           bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE);
+        height:                 10;
+        num_views:              4;
+    }
+    graphics {
+        default:            switch_spritelayout_depo_kacov_view;
+        purchase:           switch_depo_kacov_purchase;
+        autoslope:          return(CB_RESULT_AUTOSLOPE);
+        additional_text:    string(STR_CAT_PURCHASE);
+    }
+}
