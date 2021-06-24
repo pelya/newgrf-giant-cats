@@ -1,4 +1,8 @@
-Giant Cats to place on your OpenTTD map
+Giant Cats to place on your OpenTTD map.
+
+To build it, install NML compiler and run compile.sh:
+
+    pip3 install nml
 
 Cat photos are licensed under CC BY license, by following people:
 
