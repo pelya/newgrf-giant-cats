@@ -23,8 +23,8 @@ template temp_depo_kacov_1() {[
 	0,		// Image Y offset
 	2592,	// X size
 	1944,	// Y size
-	-172,	// Map X offset
-	-154	// Map Y offset
+	-1000,	// Map X offset
+	-1000	// Map Y offset
 ]}
 
 // spriteset
@@ -76,21 +76,22 @@ item (FEAT_OBJECTS, item_depo_kacov) {
     property {
         class:                  "CATS";
         classname:              string(STR_CAT_CLASSNAME);
-        name:                   string(STR_CAT_NAME);
+        name:                   string(STR_CAT_1);
         climates_available:     ALL_CLIMATES;
         size:                   [1,1];
-        build_cost_multiplier:  2;
-        remove_cost_multiplier: 8;
+        build_cost_multiplier:  4;
+        remove_cost_multiplier: 4;
         introduction_date:      date(1890,1,1);
         end_of_life_date:       0xFFFFFFFF;
-        object_flags:           bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE);
+        object_flags:           bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
         height:                 10;
-        num_views:              4;
+        num_views:              1;
+        count_per_map256:       2;
     }
     graphics {
         default:            switch_spritelayout_depo_kacov_view;
         purchase:           switch_depo_kacov_purchase;
         autoslope:          return(CB_RESULT_AUTOSLOPE);
-        additional_text:    string(STR_CAT_PURCHASE);
+        additional_text:    string(STR_CAT_1_INFO);
     }
 }
