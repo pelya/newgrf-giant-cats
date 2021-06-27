@@ -1,4 +1,16 @@
 
+switch (FEAT_OBJECTS, SELF, switch_cat_1, [
+		// We store the offset into the spriteset due to the tile slope into the 1st temporary variable
+		STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+		// We store the offset to the flat groundsprite we use into the 2nd temporary variable
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		STORE_TEMP(terrain_type == TILETYPE_DESERT      ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+		STORE_TEMP(terrain_type == TILETYPE_SNOW        ? GROUNDSPRITE_SNOW   : LOAD_TEMP(1), 1),
+		1
+		]) {
+	switch_spritelayout_cat_1;
+}
+
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
 		//use flat gound sprite for purchase menu
@@ -6,7 +18,8 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
 		//use normal terrain for purchase menu
 		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
 		]) {
-	spritelayout_cat_1_10_10;
+	//spritelayout_cat_1_5_5;
+	switch_spritelayout_cat_1;
 }
 
 item (FEAT_OBJECTS, item_cat_1) {
@@ -15,7 +28,7 @@ item (FEAT_OBJECTS, item_cat_1) {
 		classname:				string(STR_CAT_CLASSNAME);
 		name:					string(STR_CAT_1);
 		climates_available:		ALL_CLIMATES;
-		size:					[15,15];
+		size:					[14,12];
 		build_cost_multiplier:	4;
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
@@ -26,7 +39,7 @@ item (FEAT_OBJECTS, item_cat_1) {
 		count_per_map256:		2;
 	}
 	graphics {
-		default:			switch_spritelayout_cat_1;
+		default:			switch_cat_1;
 		purchase:			switch_cat_1_purchase;
 		autoslope:			return(CB_RESULT_AUTOSLOPE);
 		additional_text:	string(STR_CAT_1_INFO);
