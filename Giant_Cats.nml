@@ -16,63 +16,58 @@ template template_empty () {[
 	-32		// Map Y offset
 ]}
 
-// TODO: rename depo_kacov to cat
-
-template temp_depo_kacov_1() {[
+template offset_cat_1() {[
 	0,		// Image X offset
 	0,		// Image Y offset
 	1978,	// X size
 	1072,	// Y size
-	-1000,	// Map X offset
-	-1000	// Map Y offset
+	-989,	// Map X offset
+	-536	// Map Y offset
 ]}
 
 // spriteset
-spriteset(spriteset_depo_kacov_1, "gfx/empty.png") {
+spriteset(spriteset_cat_1, "gfx/empty.png") {
 	template_empty()
 }
-alternative_sprites(spriteset_depo_kacov_1, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1.png") {
-	temp_depo_kacov_1()
+alternative_sprites(spriteset_cat_1, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1.png") {
+	offset_cat_1()
 }
 
 // spritelayouts
-
-//depo_kacov_1
-
-spritelayout spritelayout_depo_kacov_1 {
+spritelayout spritelayout_cat_1 {
     ground {
         sprite: GROUNDSPRITE_NORMAL;
     }
     building {
-        sprite: spriteset_depo_kacov_1;
-        xextent: 4;
-        yextent: 4;
-        zextent: 4;
-        xoffset: 6; //from NE edge
-        yoffset: 12; //from NW edge
-        zoffset: 0;
+        sprite: spriteset_cat_1;
+        xoffset: 0; // in 1/16 tile from NE edge
+        yoffset: 0; // in 1/16 tile from NW edge
+        zoffset: 0; // height in pixels
+        xextent: 200; // in 1/16 tile = 12 tiles
+        yextent: 200; // in 1/16 tile = 12 tiles
+        zextent: 200; // height in pixels
     }
 }
 
 // decide spritelayout for each of the 4 views
-switch (FEAT_OBJECTS, SELF, switch_spritelayout_depo_kacov_view, view) {
-    //1:  spritelayout_depo_kacov_2;
-    //2:  spritelayout_depo_kacov_3;
-    //3:  spritelayout_depo_kacov_4;
-    spritelayout_depo_kacov_1;
+switch (FEAT_OBJECTS, SELF, switch_spritelayout_cat_1_view, view) {
+    //1:  spritelayout_cat_2;
+    //2:  spritelayout_cat_3;
+    //3:  spritelayout_cat_4;
+    spritelayout_cat_1;
 }
 
 // calculate ground sprite for purchase menu
-switch (FEAT_OBJECTS, SELF, switch_depo_kacov_purchase, [
+switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
         //use flat gound sprite for purchase menu
         STORE_TEMP(0, 0),
         //use normal terrain for purchase menu
         STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
         ]) {
-    switch_spritelayout_depo_kacov_view;
+    switch_spritelayout_cat_1_view;
 }
 
-item (FEAT_OBJECTS, item_depo_kacov) {
+item (FEAT_OBJECTS, item_cat_1) {
     property {
         class:                  "CATS";
         classname:              string(STR_CAT_CLASSNAME);
@@ -84,13 +79,13 @@ item (FEAT_OBJECTS, item_depo_kacov) {
         introduction_date:      date(1890,1,1);
         end_of_life_date:       0xFFFFFFFF;
         object_flags:           bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
-        height:                 10;
+        height:                 1;
         num_views:              1;
         count_per_map256:       2;
     }
     graphics {
-        default:            switch_spritelayout_depo_kacov_view;
-        purchase:           switch_depo_kacov_purchase;
+        default:            switch_spritelayout_cat_1_view;
+        purchase:           switch_cat_1_purchase;
         autoslope:          return(CB_RESULT_AUTOSLOPE);
         additional_text:    string(STR_CAT_1_INFO);
     }
