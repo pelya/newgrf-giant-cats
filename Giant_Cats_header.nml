@@ -1,0 +1,18 @@
+grf {
+	grfid: "CAT\01";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	url	 : string(STR_GRF_WEBSITE);
+	version: 1;
+	min_compatible_version: 1;
+}
+
+template template_empty () {[
+	0,		// Image X offset
+	0,		// Image Y offset
+	64,		// X size
+	64,		// Y size
+	-32,	// Map X offset
+	-32		// Map Y offset
+]}
+

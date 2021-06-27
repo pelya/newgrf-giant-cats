@@ -1,0 +1,34 @@
+
+// calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
+		//use flat gound sprite for purchase menu
+		STORE_TEMP(0, 0),
+		//use normal terrain for purchase menu
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		]) {
+	spritelayout_cat_1_10_10;
+}
+
+item (FEAT_OBJECTS, item_cat_1) {
+	property {
+		class:					"CATS";
+		classname:				string(STR_CAT_CLASSNAME);
+		name:					string(STR_CAT_1);
+		climates_available:		ALL_CLIMATES;
+		size:					[15,15];
+		build_cost_multiplier:	4;
+		remove_cost_multiplier: 4;
+		introduction_date:		date(1890,1,1);
+		end_of_life_date:		0xFFFFFFFF;
+		object_flags:			bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
+		height:					4;
+		num_views:				1;
+		count_per_map256:		2;
+	}
+	graphics {
+		default:			switch_spritelayout_cat_1;
+		purchase:			switch_cat_1_purchase;
+		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		additional_text:	string(STR_CAT_1_INFO);
+	}
+}
