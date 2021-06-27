@@ -21,8 +21,8 @@ template template_empty () {[
 template temp_depo_kacov_1() {[
 	0,		// Image X offset
 	0,		// Image Y offset
-	2592,	// X size
-	1944,	// Y size
+	1978,	// X size
+	1072,	// Y size
 	-1000,	// Map X offset
 	-1000	// Map Y offset
 ]}
