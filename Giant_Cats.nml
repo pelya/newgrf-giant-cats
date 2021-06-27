@@ -2,7 +2,7 @@ grf {
 	grfid: "CAT\01";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
-	url  : string(STR_GRF_WEBSITE);
+	url	 : string(STR_GRF_WEBSITE);
 	version: 1;
 	min_compatible_version: 1;
 }
@@ -22,7 +22,7 @@ template offset_cat_1() {[
 	1978,	// X size
 	1072,	// Y size
 	-989,	// Map X offset
-	-536	// Map Y offset
+	-1072	// Map Y offset
 ]}
 
 // spriteset
@@ -35,58 +35,58 @@ alternative_sprites(spriteset_cat_1, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat
 
 // spritelayouts
 spritelayout spritelayout_cat_1 {
-    ground {
-        sprite: GROUNDSPRITE_NORMAL;
-    }
-    building {
-        sprite: spriteset_cat_1;
-        xoffset: 0; // in 1/16 tile from NE edge
-        yoffset: 0; // in 1/16 tile from NW edge
-        zoffset: 0; // height in pixels
-        xextent: 200; // in 1/16 tile = 12 tiles
-        yextent: 200; // in 1/16 tile = 12 tiles
-        zextent: 200; // height in pixels
-    }
+	ground {
+		sprite: GROUNDSPRITE_NORMAL;
+	}
+	building {
+		sprite: spriteset_cat_1;
+		xoffset: 0; // in 1/16 tile from NE edge
+		yoffset: 0; // in 1/16 tile from NW edge
+		zoffset: 0; // height in pixels
+		xextent: 16; // in 1/16 tile = 1 tile
+		yextent: 16; // in 1/16 tile = 1 tile
+		zextent: 255; // height in pixels
+	}
 }
 
 // decide spritelayout for each of the 4 views
 switch (FEAT_OBJECTS, SELF, switch_spritelayout_cat_1_view, view) {
-    //1:  spritelayout_cat_2;
-    //2:  spritelayout_cat_3;
-    //3:  spritelayout_cat_4;
-    spritelayout_cat_1;
+	//1:  spritelayout_cat_2;
+	//2:  spritelayout_cat_3;
+	//3:  spritelayout_cat_4;
+	spritelayout_cat_1;
 }
 
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
-        //use flat gound sprite for purchase menu
-        STORE_TEMP(0, 0),
-        //use normal terrain for purchase menu
-        STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
-        ]) {
-    switch_spritelayout_cat_1_view;
+		//use flat gound sprite for purchase menu
+		STORE_TEMP(0, 0),
+		//use normal terrain for purchase menu
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		]) {
+	switch_spritelayout_cat_1_view;
 }
 
 item (FEAT_OBJECTS, item_cat_1) {
-    property {
-        class:                  "CATS";
-        classname:              string(STR_CAT_CLASSNAME);
-        name:                   string(STR_CAT_1);
-        climates_available:     ALL_CLIMATES;
-        size:                   [1,1];
-        build_cost_multiplier:  4;
-        remove_cost_multiplier: 4;
-        introduction_date:      date(1890,1,1);
-        end_of_life_date:       0xFFFFFFFF;
-        object_flags:           bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
-        height:                 1;
-        num_views:              1;
-        count_per_map256:       2;
-    }
-    graphics {
-        default:            switch_spritelayout_cat_1_view;
-        purchase:           switch_cat_1_purchase;
-        autoslope:          return(CB_RESULT_AUTOSLOPE);
-        additional_text:    string(STR_CAT_1_INFO);
-    }
+	property {
+		class:					"CATS";
+		classname:				string(STR_CAT_CLASSNAME);
+		name:					string(STR_CAT_1);
+		climates_available:		ALL_CLIMATES;
+		size:					[1,1];
+		build_cost_multiplier:	4;
+		remove_cost_multiplier: 4;
+		introduction_date:		date(1890,1,1);
+		end_of_life_date:		0xFFFFFFFF;
+		object_flags:			bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
+		height:					1;
+		num_views:				1;
+		count_per_map256:		2;
+	}
+	graphics {
+		default:			switch_spritelayout_cat_1_view;
+		purchase:			switch_cat_1_purchase;
+		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		additional_text:	string(STR_CAT_1_INFO);
+	}
 }
