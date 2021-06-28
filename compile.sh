@@ -7,6 +7,8 @@ cat Giant_Cats_header.nml >> generated/Giant_Cats.autogen.nml
 
 ./generate-sprite-layout.py cat_1 12 14 -128 128 >> generated/Giant_Cats.autogen.nml
 
+./generate-sprite-layout.py cat_2 15 15 0 0 >> generated/Giant_Cats.autogen.nml
+
 cat Giant_Cats_footer.nml >> generated/Giant_Cats.autogen.nml
 
 nmlc -c --default-lang=english.lng --grf=Giant_Cats.grf generated/Giant_Cats.autogen.nml || exit 1

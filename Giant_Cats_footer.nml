@@ -18,8 +18,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
 		//use normal terrain for purchase menu
 		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
 		]) {
-	//spritelayout_cat_1_5_5;
-	switch_spritelayout_cat_1;
+	spritelayout_cat_1_5_5;
 }
 
 item (FEAT_OBJECTS, item_cat_1) {
@@ -43,5 +42,51 @@ item (FEAT_OBJECTS, item_cat_1) {
 		purchase:			switch_cat_1_purchase;
 		autoslope:			return(CB_RESULT_AUTOSLOPE);
 		additional_text:	string(STR_CAT_1_INFO);
+	}
+}
+
+switch (FEAT_OBJECTS, SELF, switch_cat_2, [
+		// We store the offset into the spriteset due to the tile slope into the 1st temporary variable
+		STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+		// We store the offset to the flat groundsprite we use into the 2nd temporary variable
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		STORE_TEMP(terrain_type == TILETYPE_DESERT      ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
+		STORE_TEMP(terrain_type == TILETYPE_SNOW        ? GROUNDSPRITE_SNOW   : LOAD_TEMP(1), 1),
+		1
+		]) {
+	switch_spritelayout_cat_2;
+}
+
+// calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_cat_2_purchase, [
+		//use flat gound sprite for purchase menu
+		STORE_TEMP(0, 0),
+		//use normal terrain for purchase menu
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		]) {
+	spritelayout_cat_2_5_5;
+}
+
+item (FEAT_OBJECTS, item_cat_2) {
+	property {
+		class:					"CATS";
+		classname:				string(STR_CAT_CLASSNAME);
+		name:					string(STR_CAT_2);
+		climates_available:		ALL_CLIMATES;
+		size:					[15,15];
+		build_cost_multiplier:	4;
+		remove_cost_multiplier: 4;
+		introduction_date:		date(1890,1,1);
+		end_of_life_date:		0xFFFFFFFF;
+		object_flags:			bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER);
+		height:					4;
+		num_views:				1;
+		count_per_map256:		2;
+	}
+	graphics {
+		default:			switch_cat_2;
+		purchase:			switch_cat_2_purchase;
+		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		additional_text:	string(STR_CAT_2_INFO);
 	}
 }

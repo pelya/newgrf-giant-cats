@@ -10,6 +10,4 @@ STR_CAT_CLASSNAME	:Giant Cats
 STR_CAT_1			:Sleepy cat
 STR_CAT_1_INFO		:This cat is sleepy
 STR_CAT_2			:Cat 2
-STR_CAT_3			:Cat 3
-STR_CAT_4			:Cat 4
-STR_CAT_5			:Cat 5
+STR_CAT_2_INFO		:This cat is watching your trains
