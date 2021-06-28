@@ -2,12 +2,12 @@
 # English lng file
 
 STR_GRF_NAME		:Giant Cats {VERSION}
-STR_GRF_DESC		:Five airport-sized cats to put on your map
+STR_GRF_DESC		:Giant cats
 STR_GRF_WEBSITE		:https://github.com/pelya/newgrf-giant-cats.git
 
 #object classes
 STR_CAT_CLASSNAME	:Giant Cats
 STR_CAT_1			:Sleepy cat
 STR_CAT_1_INFO		:This cat is sleepy
-STR_CAT_2			:Cat 2
+STR_CAT_2			:Watching cat
 STR_CAT_2_INFO		:This cat is watching your trains
