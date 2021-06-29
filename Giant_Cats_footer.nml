@@ -11,6 +11,11 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1, [
 	switch_spritelayout_cat_1;
 }
 
+spriteset(spriteset_cat_1_thumb, "gfx/empty.png") { template_empty() }
+alternative_sprites(spriteset_cat_1_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1_thumb.png") {[
+	0, 0, 128, 128, -64, 0 ]}
+spritelayout spritelayout_cat_1_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_1_thumb; } }
+
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
 		//use flat gound sprite for purchase menu
@@ -18,7 +23,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
 		//use normal terrain for purchase menu
 		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
 		]) {
-	spritelayout_cat_1_5_5;
+	spritelayout_cat_1_thumb;
 }
 
 item (FEAT_OBJECTS, item_cat_1) {

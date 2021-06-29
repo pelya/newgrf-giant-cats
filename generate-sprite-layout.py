@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 
 import os, sys
+from PIL import Image
+
 
 name = sys.argv[1]
 w = int(sys.argv[2])
 h = int(sys.argv[3])
 xoff = int(sys.argv[4])
 yoff = int(sys.argv[5])
+
+image = Image.open("gfx/%s.png" % name)
 
 for x in range(w):
 	for y in range(h):
