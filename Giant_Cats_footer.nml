@@ -62,6 +62,11 @@ switch (FEAT_OBJECTS, SELF, switch_cat_2, [
 	switch_spritelayout_cat_2;
 }
 
+spriteset(spriteset_cat_2_thumb, "gfx/empty.png") { template_empty() }
+alternative_sprites(spriteset_cat_2_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_2_thumb.png") {[
+	0, 0, 221, 256, -110, -100 ]}
+spritelayout spritelayout_cat_2_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_2_thumb; } }
+
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_2_purchase, [
 		//use flat gound sprite for purchase menu
@@ -69,7 +74,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_2_purchase, [
 		//use normal terrain for purchase menu
 		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
 		]) {
-	spritelayout_cat_2_5_5;
+	spritelayout_cat_2_thumb;
 }
 
 item (FEAT_OBJECTS, item_cat_2) {
@@ -78,7 +83,7 @@ item (FEAT_OBJECTS, item_cat_2) {
 		classname:				string(STR_CAT_CLASSNAME);
 		name:					string(STR_CAT_2);
 		climates_available:		ALL_CLIMATES;
-		size:					[15,15];
+		size:					[15,14];
 		build_cost_multiplier:	4;
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
