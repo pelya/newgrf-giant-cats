@@ -1,11 +1,22 @@
 
+// Tree sprites are 1576 to 1708, arctic trees are sprites 1709 to 1820, tropical trees are 1821 to 1946, toyland trees are 1947-2009
+
 switch (FEAT_OBJECTS, SELF, switch_cat_1, [
 		// We store the offset into the spriteset due to the tile slope into the 1st temporary variable
-		STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+		//STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
 		// We store the offset to the flat groundsprite we use into the 2nd temporary variable
-		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
-		STORE_TEMP(terrain_type == TILETYPE_DESERT      ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
-		STORE_TEMP(terrain_type == TILETYPE_SNOW        ? GROUNDSPRITE_SNOW   : LOAD_TEMP(1), 1),
+		STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT :
+					terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW :
+					GROUNDSPRITE_NORMAL, 1),
+		STORE_TEMP((nearby_tile_water_class(0,0) == WATER_CLASS_SEA || ((random_bits % 2) == 0)) ? 4076 :
+					climate == CLIMATE_TEMPERATE ?
+						1576 + ((relative_pos * 3 + random_bits) % (1709 - 1576)) :
+					climate == CLIMATE_ARCTIC ?
+						1709 + ((relative_pos * 3 + random_bits) % (1821 - 1709)) :
+					climate == CLIMATE_TROPIC ?
+						1821 + ((relative_pos * 3 + random_bits) % (1947 - 1821)) :
+						1947 + ((relative_pos * 3 + random_bits) % (2010 - 1947))
+					, 2),
 		1
 		]) {
 	switch_spritelayout_cat_1;
@@ -52,11 +63,20 @@ item (FEAT_OBJECTS, item_cat_1) {
 
 switch (FEAT_OBJECTS, SELF, switch_cat_2, [
 		// We store the offset into the spriteset due to the tile slope into the 1st temporary variable
-		STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+		//STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
 		// We store the offset to the flat groundsprite we use into the 2nd temporary variable
-		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
-		STORE_TEMP(terrain_type == TILETYPE_DESERT      ? GROUNDSPRITE_DESERT : LOAD_TEMP(1), 1),
-		STORE_TEMP(terrain_type == TILETYPE_SNOW        ? GROUNDSPRITE_SNOW   : LOAD_TEMP(1), 1),
+		STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT :
+					terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW :
+					GROUNDSPRITE_NORMAL, 1),
+		STORE_TEMP((nearby_tile_water_class(0,0) == WATER_CLASS_SEA || ((random_bits % 2) == 0)) ? 4076 :
+					climate == CLIMATE_TEMPERATE ?
+						1576 + ((relative_pos * 3 + random_bits) % (1709 - 1576)) :
+					climate == CLIMATE_ARCTIC ?
+						1709 + ((relative_pos * 3 + random_bits) % (1821 - 1709)) :
+					climate == CLIMATE_TROPIC ?
+						1821 + ((relative_pos * 3 + random_bits) % (1947 - 1821)) :
+						1947 + ((relative_pos * 3 + random_bits) % (2010 - 1947))
+					, 2),
 		1
 		]) {
 	switch_spritelayout_cat_2;
