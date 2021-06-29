@@ -5,7 +5,7 @@ mkdir -p generated
 
 cat Giant_Cats_header.nml >> generated/Giant_Cats.autogen.nml
 
-./generate-sprite-layout.py cat_1 12 14 -128 128 >> generated/Giant_Cats.autogen.nml
+./generate-sprite-layout.py cat_1 14 11 -128 128 >> generated/Giant_Cats.autogen.nml
 
 ./generate-sprite-layout.py cat_2 15 15 0 0 >> generated/Giant_Cats.autogen.nml
 

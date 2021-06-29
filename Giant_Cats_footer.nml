@@ -13,7 +13,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1, [
 
 spriteset(spriteset_cat_1_thumb, "gfx/empty.png") { template_empty() }
 alternative_sprites(spriteset_cat_1_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1_thumb.png") {[
-	0, 0, 128, 128, -64, 0 ]}
+	0, 0, 256, 134, -128, 0 ]}
 spritelayout spritelayout_cat_1_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_1_thumb; } }
 
 // calculate ground sprite for purchase menu
@@ -32,7 +32,7 @@ item (FEAT_OBJECTS, item_cat_1) {
 		classname:				string(STR_CAT_CLASSNAME);
 		name:					string(STR_CAT_1);
 		climates_available:		ALL_CLIMATES;
-		size:					[14,12];
+		size:					[14,11];
 		build_cost_multiplier:	4;
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
