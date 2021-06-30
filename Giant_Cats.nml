@@ -51,7 +51,7 @@ item (FEAT_OBJECTS, item_cat_1) {
 		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
 		height:					4;
 		num_views:				1;
-		count_per_map256:		2;
+		count_per_map256:		1;
 	}
 	graphics {
 		default:			switch_cat_1;
@@ -111,7 +111,7 @@ item (FEAT_OBJECTS, item_cat_2) {
 		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
 		height:					4;
 		num_views:				1;
-		count_per_map256:		2;
+		count_per_map256:		1;
 	}
 	graphics {
 		default:			switch_cat_2;
