@@ -48,7 +48,7 @@ item (FEAT_OBJECTS, item_cat_1) {
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
 		end_of_life_date:		0xFFFFFFFF;
-		object_flags:			bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
+		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
 		height:					4;
 		num_views:				1;
 		count_per_map256:		2;
@@ -108,7 +108,7 @@ item (FEAT_OBJECTS, item_cat_2) {
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
 		end_of_life_date:		0xFFFFFFFF;
-		object_flags:			bitmask(OBJ_FLAG_REMOVE_IS_INCOME, OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
+		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER);
 		height:					4;
 		num_views:				1;
 		count_per_map256:		2;
