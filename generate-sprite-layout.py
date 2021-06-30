@@ -27,7 +27,7 @@ for x in range(w):
 		if not empty:
 			print('spritelayout spritelayout_%s_%d_%d { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_%s_%d_%d; } }' % (name, x, y, name, x, y))
 		else:
-			print('spritelayout spritelayout_%s_%d_%d { ground { sprite: LOAD_TEMP(1); } building { sprite: LOAD_TEMP(2); zextent: 80; } }' % (name, x, y))
+			print('spritelayout spritelayout_%s_%d_%d { ground { sprite: LOAD_TEMP(1); } building { sprite: LOAD_TEMP(2); zextent: 48; } }' % (name, x, y))
 
 print('')
 print('switch(FEAT_OBJECTS, SELF, switch_spritelayout_%s, relative_pos) {' % (name))
