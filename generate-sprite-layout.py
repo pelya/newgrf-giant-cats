@@ -8,6 +8,7 @@ h = int(sys.argv[2])
 w = int(sys.argv[3])
 xoff = int(sys.argv[4])
 yoff = int(sys.argv[5])
+trees = (sys.argv[6] == "trees")
 
 image = Image.open("gfx/%s.png" % name)
 
@@ -20,10 +21,13 @@ for x in range(w):
 		imgy = x * 64 + y * 64 + yoff
 		print('	%d, %d, 128, 128, -64, 0 ]}' % (imgx, imgy))
 		empty = True
-		for ex in range(128):
-			for ey in range(128):
-				if image.getpixel((imgx + ex, imgy + ey))[3] != 0:
-					empty = False
+		if trees:
+			for ex in range(128):
+				for ey in range(128):
+					if image.getpixel((imgx + ex, imgy + ey))[3] != 0:
+						empty = False
+		else:
+			empty = False
 		if not empty:
 			print('spritelayout spritelayout_%s_%d_%d { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_%s_%d_%d; } }' % (name, x, y, name, x, y))
 		else:
