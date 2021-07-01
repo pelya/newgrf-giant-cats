@@ -11,7 +11,7 @@ cat Giant_Cats-header.nml >> generated/Giant_Cats.autogen.nml
 
 ./generate-sprite-layout.py cat_3 12 12 0 160 >> generated/Giant_Cats.autogen.nml
 
-./generate-sprite-layout.py cat_4 15 15 -64 96 >> generated/Giant_Cats.autogen.nml
+./generate-sprite-layout.py cat_4 15 15 -96 128 >> generated/Giant_Cats.autogen.nml
 
 cat Giant_Cats.nml >> generated/Giant_Cats.autogen.nml
 
