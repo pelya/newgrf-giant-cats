@@ -25,7 +25,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_1, [
 spriteset(spriteset_cat_1_thumb, "gfx/empty.png") { template_empty() }
 alternative_sprites(spriteset_cat_1_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_1_thumb.png") {[
 	0, 0, 256, 134, -128, 0 ]}
-spritelayout spritelayout_cat_1_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_1_thumb; } }
+spritelayout spritelayout_cat_1_thumb { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_cat_1_thumb; } }
 
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_1_purchase, [
@@ -56,7 +56,8 @@ item (FEAT_OBJECTS, item_cat_1) {
 	graphics {
 		default:			switch_cat_1;
 		purchase:			switch_cat_1_purchase;
-		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
+		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
 		additional_text:	string(STR_CAT_1_INFO);
 	}
 }
@@ -85,7 +86,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_2, [
 spriteset(spriteset_cat_2_thumb, "gfx/empty.png") { template_empty() }
 alternative_sprites(spriteset_cat_2_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_2_thumb.png") {[
 	0, 0, 221, 256, -110, -100 ]}
-spritelayout spritelayout_cat_2_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_2_thumb; } }
+spritelayout spritelayout_cat_2_thumb { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_cat_2_thumb; } }
 
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_2_purchase, [
@@ -116,7 +117,8 @@ item (FEAT_OBJECTS, item_cat_2) {
 	graphics {
 		default:			switch_cat_2;
 		purchase:			switch_cat_2_purchase;
-		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
+		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
 		additional_text:	string(STR_CAT_2_INFO);
 	}
 }
@@ -145,7 +147,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_3, [
 spriteset(spriteset_cat_3_thumb, "gfx/empty.png") { template_empty() }
 alternative_sprites(spriteset_cat_3_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_3_thumb.png") {[
 	0, 0, 256, 219, -128, -100 ]}
-spritelayout spritelayout_cat_3_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_3_thumb; } }
+spritelayout spritelayout_cat_3_thumb { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_cat_3_thumb; } }
 
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_3_purchase, [
@@ -176,7 +178,8 @@ item (FEAT_OBJECTS, item_cat_3) {
 	graphics {
 		default:			switch_cat_3;
 		purchase:			switch_cat_3_purchase;
-		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
+		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
 		additional_text:	string(STR_CAT_3_INFO);
 	}
 }
@@ -205,7 +208,7 @@ switch (FEAT_OBJECTS, SELF, switch_cat_4, [
 spriteset(spriteset_cat_4_thumb, "gfx/empty.png") { template_empty() }
 alternative_sprites(spriteset_cat_4_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_4_thumb.png") {[
 	0, 0, 256, 125, -110, -50 ]}
-spritelayout spritelayout_cat_4_thumb { ground { sprite: LOAD_TEMP(0) + LOAD_TEMP(1); } building { sprite: spriteset_cat_4_thumb; } }
+spritelayout spritelayout_cat_4_thumb { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_cat_4_thumb; } }
 
 // calculate ground sprite for purchase menu
 switch (FEAT_OBJECTS, SELF, switch_cat_4_purchase, [
@@ -236,7 +239,88 @@ item (FEAT_OBJECTS, item_cat_4) {
 	graphics {
 		default:			switch_cat_4;
 		purchase:			switch_cat_4_purchase;
-		autoslope:			return(CB_RESULT_AUTOSLOPE);
+		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
+		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
 		additional_text:	string(STR_CAT_4_INFO);
+	}
+}
+
+switch(FEAT_OBJECTS, SELF, switch_anim_cat_5, animation_frame) {
+	 0: switch_spritelayout_cat_5_1;
+	 1: switch_spritelayout_cat_5_2;
+	 2: switch_spritelayout_cat_5_3;
+	 3: switch_spritelayout_cat_5_1;
+	 4: switch_spritelayout_cat_5_1;
+	 5: switch_spritelayout_cat_5_1;
+	 6: switch_spritelayout_cat_5_1;
+	 7: switch_spritelayout_cat_5_1;
+	 8: switch_spritelayout_cat_5_2;
+	 9: switch_spritelayout_cat_5_3;
+	10: switch_spritelayout_cat_5_1;
+	11: switch_spritelayout_cat_5_1;
+	12: switch_spritelayout_cat_5_4;
+	13: switch_spritelayout_cat_5_5;
+	14: switch_spritelayout_cat_5_5;
+	15: switch_spritelayout_cat_5_5;
+	16: switch_spritelayout_cat_5_5;
+	17: switch_spritelayout_cat_5_4;
+	18: switch_spritelayout_cat_5_1;
+	19: switch_spritelayout_cat_5_1;
+}
+
+switch (FEAT_OBJECTS, SELF, switch_cat_5, [
+		// We store the offset into the spriteset due to the tile slope into the 1st temporary variable
+		//STORE_TEMP(slope_to_sprite_offset(tile_slope), 0),
+		// We store the offset to the flat groundsprite we use into the 2nd temporary variable
+		STORE_TEMP(terrain_type == TILETYPE_DESERT ? GROUNDSPRITE_DESERT :
+					terrain_type == TILETYPE_SNOW ? GROUNDSPRITE_SNOW :
+					GROUNDSPRITE_NORMAL, 1),
+		STORE_TEMP(4076, 2),
+		1
+		]) {
+	switch_anim_cat_5;
+}
+
+spriteset(spriteset_cat_5_thumb, "gfx/empty.png") { template_empty() }
+alternative_sprites(spriteset_cat_5_thumb, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP, "gfx/cat_5_thumb.png") {[
+	0, 0, 256, 156, -110, -50 ]}
+spritelayout spritelayout_cat_5_thumb { ground { sprite: LOAD_TEMP(1); } building { sprite: spriteset_cat_5_thumb; } }
+
+// calculate ground sprite for purchase menu
+switch (FEAT_OBJECTS, SELF, switch_cat_5_purchase, [
+		//use flat gound sprite for purchase menu
+		STORE_TEMP(0, 0),
+		//use normal terrain for purchase menu
+		STORE_TEMP(GROUNDSPRITE_NORMAL, 1),
+		]) {
+	spritelayout_cat_5_thumb;
+}
+
+item (FEAT_OBJECTS, item_cat_5) {
+	property {
+		class:					"CATS";
+		classname:				string(STR_CAT_CLASSNAME);
+		name:					string(STR_CAT_5);
+		climates_available:		ALL_CLIMATES;
+		size:					[12,12];
+		build_cost_multiplier:	4;
+		remove_cost_multiplier: 4;
+		introduction_date:		date(1890,1,1);
+		end_of_life_date:		0xFFFFFFFF;
+		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER, OBJ_FLAG_ANIMATED);
+		animation_speed:		3;
+		animation_info:			[ANIMATION_LOOPING, 20];
+		animation_triggers:		bitmask(ANIM_TRIGGER_OBJ_BUILT);
+		height:					4;
+		num_views:				1;
+		count_per_map256:		1;
+	}
+	graphics {
+		default:			switch_cat_5;
+		purchase:			switch_cat_5_purchase;
+		additional_text:	string(STR_CAT_5_INFO);
+		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
+		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
+		anim_control:		return(CB_RESULT_START_ANIMATION);
 	}
 }

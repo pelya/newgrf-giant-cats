@@ -16,3 +16,5 @@ STR_CAT_3			:Box cat
 STR_CAT_3_INFO		:This cat comes in a box
 STR_CAT_4			:Watching cat
 STR_CAT_4_INFO		:This cat is watching your trains
+STR_CAT_5			:Hissing cat
+STR_CAT_5_INFO		:This cat hisses
