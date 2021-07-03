@@ -258,14 +258,54 @@ switch(FEAT_OBJECTS, SELF, switch_anim_cat_5, animation_frame) {
 	 9: switch_spritelayout_cat_5_3;
 	10: switch_spritelayout_cat_5_1;
 	11: switch_spritelayout_cat_5_1;
-	12: switch_spritelayout_cat_5_4;
-	13: switch_spritelayout_cat_5_5;
-	14: switch_spritelayout_cat_5_5;
-	15: switch_spritelayout_cat_5_5;
-	16: switch_spritelayout_cat_5_5;
-	17: switch_spritelayout_cat_5_4;
+	12: switch_spritelayout_cat_5_1;
+	13: switch_spritelayout_cat_5_1;
+	14: switch_spritelayout_cat_5_2;
+	15: switch_spritelayout_cat_5_3;
+	16: switch_spritelayout_cat_5_1;
+	17: switch_spritelayout_cat_5_1;
 	18: switch_spritelayout_cat_5_1;
 	19: switch_spritelayout_cat_5_1;
+	20: switch_spritelayout_cat_5_1;
+	21: switch_spritelayout_cat_5_1;
+	22: switch_spritelayout_cat_5_1;
+	23: switch_spritelayout_cat_5_1;
+	24: switch_spritelayout_cat_5_2;
+	25: switch_spritelayout_cat_5_3;
+	26: switch_spritelayout_cat_5_1;
+	27: switch_spritelayout_cat_5_1;
+	28: switch_spritelayout_cat_5_1;
+	29: switch_spritelayout_cat_5_1;
+	30: switch_spritelayout_cat_5_1;
+	31: switch_spritelayout_cat_5_1;
+	32: switch_spritelayout_cat_5_1;
+	33: switch_spritelayout_cat_5_1;
+	34: switch_spritelayout_cat_5_2;
+	35: switch_spritelayout_cat_5_3;
+	36: switch_spritelayout_cat_5_1;
+	37: switch_spritelayout_cat_5_1;
+	38: switch_spritelayout_cat_5_1;
+	39: switch_spritelayout_cat_5_1;
+	40: switch_spritelayout_cat_5_1;
+	41: switch_spritelayout_cat_5_1;
+	42: switch_spritelayout_cat_5_1;
+	43: switch_spritelayout_cat_5_2;
+	44: switch_spritelayout_cat_5_3;
+	45: switch_spritelayout_cat_5_1;
+	46: switch_spritelayout_cat_5_1;
+	47: switch_spritelayout_cat_5_1;
+	48: switch_spritelayout_cat_5_1;
+	49: switch_spritelayout_cat_5_1;
+	50: switch_spritelayout_cat_5_1;
+	51: switch_spritelayout_cat_5_1;
+	52: switch_spritelayout_cat_5_4;
+	53: switch_spritelayout_cat_5_5;
+	54: switch_spritelayout_cat_5_5;
+	55: switch_spritelayout_cat_5_5;
+	56: switch_spritelayout_cat_5_5;
+	57: switch_spritelayout_cat_5_5;
+	58: switch_spritelayout_cat_5_5;
+	59: switch_spritelayout_cat_5_4;
 }
 
 switch (FEAT_OBJECTS, SELF, switch_cat_5, [
@@ -302,14 +342,14 @@ item (FEAT_OBJECTS, item_cat_5) {
 		classname:				string(STR_CAT_CLASSNAME);
 		name:					string(STR_CAT_5);
 		climates_available:		ALL_CLIMATES;
-		size:					[12,12];
+		size:					[12,11];
 		build_cost_multiplier:	4;
 		remove_cost_multiplier: 4;
 		introduction_date:		date(1890,1,1);
 		end_of_life_date:		0xFFFFFFFF;
 		object_flags:			bitmask(OBJ_FLAG_ALLOW_BRIDGE, OBJ_FLAG_ON_WATER, OBJ_FLAG_DRAW_WATER, OBJ_FLAG_ANIMATED);
 		animation_speed:		3;
-		animation_info:			[ANIMATION_LOOPING, 20];
+		animation_info:			[ANIMATION_LOOPING, 60];
 		animation_triggers:		bitmask(ANIM_TRIGGER_OBJ_BUILT);
 		height:					4;
 		num_views:				1;
@@ -322,5 +362,6 @@ item (FEAT_OBJECTS, item_cat_5) {
 		autoslope:			return(CB_RESULT_NO_AUTOSLOPE);
 		tile_check:			return((getbits(extra_callback_info1, 0, 5) == 0) ? CB_RESULT_LOCATION_ALLOW : CB_RESULT_LOCATION_DISALLOW);
 		anim_control:		return(CB_RESULT_START_ANIMATION);
+		anim_next_frame:	return(CB_RESULT_NEXT_FRAME | ((animation_frame == 45) ? (sound("sfx/cat_5.wav") << 8) : 0));
 	}
 }

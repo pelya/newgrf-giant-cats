@@ -2,7 +2,7 @@
 # English lng file
 
 STR_GRF_NAME		:Giant Cats {VERSION}
-STR_GRF_DESC		:Giant cats
+STR_GRF_DESC		:Five cats to put onto your map
 STR_GRF_WEBSITE		:https://github.com/pelya/newgrf-giant-cats.git
 
 #object classes
