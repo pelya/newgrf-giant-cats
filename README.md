@@ -1,5 +1,8 @@
 Giant Cats to place on your OpenTTD map.
 
+Discussion:
+https://www.tt-forums.net/viewtopic.php?f=67&t=89098
+
 To build it, install NML compiler and run compile.sh:
 
     pip3 install nml
